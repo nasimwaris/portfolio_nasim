@@ -71,7 +71,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden px-6 py-8 md:px-6 lg:py-12"
+      className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden px-6 py-4 md:px-4"
     >
       {/* Background Gradients */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -79,7 +79,7 @@ export default function Hero() {
         <div className="absolute -bottom-[30%] -right-[10%] h-[800px] w-[800px] rounded-full bg-purple-500/10 blur-[120px] dark:bg-purple-500/5" />
       </div>
 
-      <div className="mx-auto grid max-w-7xl w-full grid-cols-1 items-center gap-12 md:grid-cols-12">
+      <div className="mx-auto grid max-w-7xl w-full grid-cols-1 items-center gap-12 md:grid-cols-12 px-4">
 
         {/* Left Content */}
         <motion.div
@@ -92,7 +92,7 @@ export default function Hero() {
             Welcome to my space
           </span>
 
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-extrabold tracking-tight">
             Hello, I&apos;m <br />
             <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
               Nasim Waris

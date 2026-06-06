@@ -15,9 +15,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Portfolio | Nasim Waris",
   description: "Full-stack developer portfolio of Nasim Waris. Specializing in Java, Spring Boot, Microservices, and Next.js/React framework.",
-  icons: {
-    icon: "/images/profile.png",
-  },
 };
 
 export default function RootLayout({
