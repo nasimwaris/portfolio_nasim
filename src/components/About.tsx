@@ -68,7 +68,7 @@ export default function About() {
             </span>
 
             <p className="mt-6 text-base leading-relaxed text-slate-600 dark:text-slate-400">
-              Results-driven Full-Stack Software Engineer with 2.5+ years of experience building scalable web applications and robust RESTful APIs.
+              Results-driven Full-Stack Software Engineer with 3+ years of experience building scalable web applications and robust RESTful APIs.
               Skilled in React.js, Next.js, TypeScript, Java, Spring Boot, Node.js, and PostgreSQL, with a strong focus on performance, security, and clean architecture.
               Passionate about developing modern, user-centric digital solutions that deliver seamless experiences and real business impact through clean, maintainable, and efficient code.
 

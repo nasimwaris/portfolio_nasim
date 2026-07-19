@@ -45,7 +45,7 @@ export default function Footer() {
             Nasim Portfolio
           </h3>
           <p className="text-sm leading-relaxed text-slate-400 max-w-xs">
-            Thank you for visiting my personal portfolio website. Keep Rising 🚀. Feel free to connect with me via social channels or the contact form!
+            Thank you for visiting my digital portfolio. I am deeply passionate about building scalable solutions and crafting impactful user experiences. I'm always open to discussing innovative projects, tech collaborations, or new career opportunities. Keep Rising 🚀. Feel free to connect with me through any of my social channels or drop a message via the contact form!
           </p>
         </div>
 

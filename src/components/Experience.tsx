@@ -8,7 +8,7 @@ interface ExperienceItem {
   company: string;
   role: string;
   duration: string;
-  description?: string;
+  description?: string | string[];
 }
 
 interface CertificateItem {
@@ -23,20 +23,37 @@ const experienceData: ExperienceItem[] = [
     company: "Codefork Technologies Private Limited - SDLC Corp, Noida",
     role: "Full Stack Developer",
     duration: "Sep 2025 - Ongoing",
-    description: "Developed AI-driven full-stack applications using TypeScript, Next.js, NestJS, and MongoDB, improving automation, decision-making, and system intelligence. Integrated secure payment gateways (subscriptions and transactions) using REST APIs, ensuring reliable and scalable financial processing. Designed and optimized scalable backend services with NestJS, supporting high-performance, AI-enabled workflows and microservice-based architecture.",
-  },
-  {
-    company: "Connoisseur Infotech Pvt Ltd, Mohali",
-    role: "Software Engineer",
-    duration: "May 2025 - Jul 2025",
-    description: "Built a high-accuracy Resume Parsing system using TypeScript, NestJS, Regex, and NLP, processing 1,500+ resumes including scanned documents via Google OCR. Integrated parsing engine with RESTful APIs and MongoDB, enabling automated data extraction. Improved system performance using asynchronous processing, optimized database queries in Agile method.",
+    description: [
+      "Developed AI-driven full-stack applications using Next.js, NestJS, TypeScript, and MongoDB",
+      "Integrated secure payment gateways and subscription systems using REST APIs",
+      "Designed scalable backend services and microservice-based architecture",
+      "Built responsive frontend interfaces with optimized performance",
+      "Improved application workflows and automation systems"
+    ],
   },
   {
     company: "Impactsure Technologies Private Limited, Mumbai",
     role: "Associate Software Developer",
-    duration: "Jan 2024 - Apr 2025",
-    description: "Automated banking credit document generation using AI/ML integrations with NestJS, managing 320+ configurations and 75+ dynamic parameters, reducing processing time by 80% and improving accuracy by 75%. Developed secure and scalable NestJS microservices integrated with MongoDB and OCR engines. Implemented JWT/OAuth2 authentication, Redis caching, and centralized logging for improved security, performance, and monitoring. Built responsive user interfaces using Next.js, TypeScript, and JavaScript for dynamic data handling. Digitized end-to-end document workflows, ensuring scalability, accuracy, and compliance for enterprise-level banking automation solutions.",
-  }
+    duration: "Jan 2024 - Aug 2025",
+    description: [
+      "Built enterprise-level banking automation systems",
+      "Developed secure microservices with JWT/OAuth2 authentication and Redis caching",
+      "Automated document workflows with AI/ML integrations, improving processing efficiency",
+      "Built responsive frontend applications",
+      "Optimized backend performance and scalable workflow architecture"
+    ],
+  },
+  {
+    company: "Rablik Private Limited, Bhopal",
+    role: "Full Stack Developer",
+    duration: "Sep 2023 - Dec 2023",
+    description: [
+      "Developed responsive and user-friendly web pages using HTML, CSS, and JavaScript, ensuring compatibility across different devices and screen sizes.",
+      "Implemented dynamic features and integrated REST APIs to enable seamless communication between the frontend and backend.",
+      "Debugged, optimized, and maintained clean, reusable, and well-structured code to improve application performance and maintainability.",
+      "Collaborated with the development team to build real-world web applications, strengthening frontend development skills and gaining hands-on experience with modern web development practices."
+    ],
+  },
 ];
 
 const certificatesData: CertificateItem[] = [
@@ -44,7 +61,7 @@ const certificatesData: CertificateItem[] = [
     title: "Full Stack Development",
     issuer: "SCA Live",
     duration: "July 2023 - Completed",
-    imageSrc: "/images/certificates/java_programming.jpg",
+    imageSrc: "/images/certificates/java_programming.jpeg",
   },
   {
     title: "Computer Network",
@@ -79,22 +96,20 @@ export default function Experience() {
 
   return (
     <section id="experience" className="py-20 bg-slate-50/50 dark:bg-slate-900/20 scroll-mt-10">
-      
+
       {/* Anchor for certificates navigation */}
       <div id="certificate" className="scroll-mt-24" />
+      <div className="mx-auto max-w-7xl px-6 md:px-8">
 
-      <div className="mx-auto max-w-4xl px-6 md:px-8">
-        
         {/* Tab Selector Header */}
         <div className="flex justify-center items-center gap-6 mb-16 border-b border-slate-200 dark:border-slate-800 max-w-md mx-auto">
-          
+
           <button
             onClick={() => setActiveTab("experience")}
-            className={`flex items-center gap-2 pb-4 text-lg font-bold border-b-2 transition-all ${
-              activeTab === "experience"
-                ? "border-indigo-500 text-indigo-500"
-                : "border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
-            }`}
+            className={`flex items-center gap-2 pb-4 text-lg font-bold border-b-2 transition-all ${activeTab === "experience"
+              ? "border-indigo-500 text-indigo-500"
+              : "border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+              }`}
           >
             <Briefcase size={20} />
             Experience
@@ -102,11 +117,10 @@ export default function Experience() {
 
           <button
             onClick={() => setActiveTab("certificates")}
-            className={`flex items-center gap-2 pb-4 text-lg font-bold border-b-2 transition-all ${
-              activeTab === "certificates"
-                ? "border-indigo-500 text-indigo-500"
-                : "border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
-            }`}
+            className={`flex items-center gap-2 pb-4 text-lg font-bold border-b-2 transition-all ${activeTab === "certificates"
+              ? "border-indigo-500 text-indigo-500"
+              : "border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+              }`}
           >
             <Award size={20} />
             Certificates
@@ -117,7 +131,7 @@ export default function Experience() {
         {/* Dynamic Display Panel */}
         <div>
           <AnimatePresence mode="wait">
-            
+
             {activeTab === "experience" && (
               <motion.div
                 key="experience-tab"
@@ -141,7 +155,7 @@ export default function Experience() {
                               {exp.role}
                             </p>
                           </div>
-                          
+
                           <div className="flex items-center gap-1 text-xs text-slate-400 font-medium">
                             <Calendar size={13} />
                             <span>{exp.duration}</span>
@@ -149,9 +163,17 @@ export default function Experience() {
                         </div>
 
                         {exp.description && (
-                          <p className="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                            {exp.description}
-                          </p>
+                          Array.isArray(exp.description) ? (
+                            <ul className="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed list-disc list-outside ml-4 space-y-1">
+                              {exp.description.map((item, i) => (
+                                <li key={i}>{item}</li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <p className="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                              {exp.description}
+                            </p>
+                          )
                         )}
                       </div>
 
@@ -179,11 +201,11 @@ export default function Experience() {
                       <span className="inline-flex rounded-lg bg-indigo-50 dark:bg-indigo-950/30 p-2 text-indigo-500">
                         <Award size={24} />
                       </span>
-                      
+
                       <h3 className="mt-4 text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">
                         {cert.title}
                       </h3>
-                      
+
                       <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
                         {cert.issuer}
                       </p>
@@ -193,7 +215,7 @@ export default function Experience() {
                       <span className="text-xs text-slate-400 font-medium">
                         {cert.duration}
                       </span>
-                      
+
                       <button
                         onClick={() => {
                           setModalImage(cert.imageSrc);
@@ -230,7 +252,7 @@ export default function Experience() {
               exit={{ scale: 0.95 }}
               className="relative max-w-3xl w-full rounded-2xl bg-white dark:bg-slate-900 overflow-hidden shadow-2xl p-6 border border-slate-200 dark:border-slate-800"
             >
-              
+
               {/* Modal Header */}
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-200 dark:border-slate-800">
                 <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">
@@ -264,7 +286,7 @@ export default function Experience() {
                     }
                   }}
                 />
-                
+
                 {/* Fallback layout */}
                 <div className="fallback-container hidden absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-slate-50 dark:bg-slate-950">
                   <Award size={48} className="text-indigo-500 animate-bounce mb-3" />

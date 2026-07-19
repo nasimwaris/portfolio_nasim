@@ -10,17 +10,23 @@ interface Project {
   imageSrc: string;
   tags: string[];
   viewLink: string;
-  codeLink: string;
+  codeLink?: string;
 }
 
 const projectsData: Project[] = [
   {
+    title: "AI Interview Platform",
+    description: "An intelligent online interview platform that conducts automated technical interviews, evaluates candidates in real-time using advanced LLMs, and provides comprehensive feedback and scoring.",
+    imageSrc: "/images/projects/ai_interview.png",
+    tags: ["React", "Node.js", "Claude", "Gemini", "MongoDB", "Payment Gateway", "LLM"],
+    viewLink: "https://interview-coch-zyx8.vercel.app/",
+  },
+  {
     title: "Food Ordering & Management Platform",
     description: "Developed and deployed a live food management platform for a non-veg restaurant, featuring menu management, order handling, secure authentication, and real-time customer interactions.",
-    imageSrc: "/images/projects/food_delivery.png",
+    imageSrc: "/images/projects/food_delivery1.png",
     tags: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "JWT"],
     viewLink: "https://mba-biryani-frontend.vercel.app/",
-    codeLink: "https://mba-biryani-frontend.vercel.app/",
   },
   {
     title: "Document Verification System",
@@ -28,16 +34,8 @@ const projectsData: Project[] = [
     imageSrc: "/images/projects/document_verification.png",
     tags: ["Next.js", "Node.js", "Express", "PostgreSQL", "JWT"],
     viewLink: "https://document-verification-system-fronte.vercel.app/",
-    codeLink: "https://github.com/nasimwaris/document-verification-system",
-  },
-  {
-    title: "AI Resume Parser",
-    description: "An intelligent resume parsing system that automatically extracts and analyzes key information from resumes using Google Gemini AI, built on a robust Next.js and NestJS architecture.",
-    imageSrc: "/images/projects/ai_resume.png",
-    tags: ["Next.js", "NestJS", "Google Gemini AI", "TypeScript"],
-    viewLink: "#",
-    codeLink: "#",
   }
+
 ];
 
 export default function Projects() {
@@ -94,15 +92,17 @@ export default function Projects() {
                       <Eye size={20} />
                     </a>
                   )}
-                  <a
-                    href={project.codeLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-indigo-600 text-white rounded-full shadow-lg hover:scale-110 transition-transform"
-                    title="Source Code"
-                  >
-                    <Code size={20} />
-                  </a>
+                  {project.codeLink && project.codeLink !== "#" && (
+                    <a
+                      href={project.codeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-indigo-600 text-white rounded-full shadow-lg hover:scale-110 transition-transform"
+                      title="Source Code"
+                    >
+                      <Code size={20} />
+                    </a>
+                  )}
                 </div>
               </div>
 
@@ -149,15 +149,17 @@ export default function Projects() {
                     </span>
                   )}
 
-                  <a
-                    href={project.codeLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                  >
-                    <Code size={16} />
-                    View Code
-                  </a>
+                  {project.codeLink && project.codeLink !== "#" && (
+                    <a
+                      href={project.codeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                    >
+                      <Code size={16} />
+                      View Code
+                    </a>
+                  )}
                 </div>
 
               </div>

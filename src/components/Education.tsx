@@ -56,7 +56,7 @@ const educationData: EducationItem[] = [
 export default function Education() {
   return (
     <section id="education" className="py-20 bg-slate-50/50 dark:bg-slate-900/20 scroll-mt-10">
-      <div className="mx-auto max-w-5xl px-6 md:px-8">
+      <div className="mx-auto max-w-7xl px-6 md:px-8">
         
         {/* Section Heading */}
         <div className="text-center mb-6">
@@ -72,7 +72,7 @@ export default function Education() {
         </p>
 
         {/* Education List Container */}
-        <div className="relative space-y-6 max-w-4xl mx-auto">
+        <div className="relative space-y-6 w-full mx-auto">
           {educationData.map((item, index) => (
             <motion.div
               key={index}
