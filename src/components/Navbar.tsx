@@ -7,11 +7,12 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
   { label: "Projects", href: "#project" },
-  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
   { label: "Certificates", href: "#certificate" },
+  { label: "Research", href: "#research" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -23,8 +24,7 @@ export default function Navbar() {
   // Load and apply theme
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const initialTheme = savedTheme || systemTheme;
+    const initialTheme = savedTheme || "dark";
     
     if (initialTheme === "dark") {
       document.documentElement.classList.add("dark");

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Mail, Trophy, ArrowDown } from "lucide-react";
+import { Mail, Trophy, ArrowDown, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 
 const roles = [
@@ -110,49 +110,56 @@ export default function Hero() {
 
           <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
             <a
-              href="#about"
-              className="group flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all hover:bg-indigo-500 hover:shadow-indigo-500/35 hover:-translate-y-0.5 active:translate-y-0"
+              href="#projects"
+              className="group flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/25 transition-all hover:opacity-90 hover:shadow-cyan-500/35 hover:-translate-y-0.5 active:translate-y-0"
             >
-              About Me
-              <ArrowDown size={16} className="transition-transform group-hover:translate-y-1" />
+              View My Work
+              <ExternalLink size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 rounded-xl border border-slate-200 bg-transparent px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:-translate-y-0.5 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900"
+            >
+              <ExternalLink size={16} />
+              Resume
+            </a>
+            <a
+              href="#contact"
+              className="group flex items-center gap-2 rounded-xl border border-slate-200 bg-transparent px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:-translate-y-0.5 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900"
+            >
+              <Mail size={16} />
+              Contact Me
             </a>
           </div>
 
           {/* Social Icons */}
-          <div className="mt-10 flex items-center gap-4">
-            <a
-              href="https://www.linkedin.com/in/nasim-waris/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition-all hover:-translate-y-1 hover:border-indigo-500 hover:bg-indigo-50 hover:text-indigo-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-indigo-400 dark:hover:bg-indigo-950/30 dark:hover:text-indigo-400"
-              aria-label="LinkedIn"
-            >
-              <LinkedinIcon />
-            </a>
+          <div className="mt-8 flex items-center gap-4 justify-center md:justify-start">
             <a
               href="https://github.com/nasimwaris"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition-all hover:-translate-y-1 hover:border-slate-800 hover:bg-slate-50 hover:text-black dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-white dark:hover:bg-slate-800 dark:hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-transparent text-slate-600 shadow-sm transition-all hover:-translate-y-1 hover:border-slate-800 hover:bg-slate-50 hover:text-black dark:border-slate-800 dark:text-slate-400 dark:hover:border-white dark:hover:bg-slate-800 dark:hover:text-white"
               aria-label="GitHub"
             >
               <GithubIcon />
             </a>
             <a
-              href="mailto:nasimwaris189@gmail.com"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition-all hover:-translate-y-1 hover:border-pink-500 hover:bg-pink-50 hover:text-pink-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-pink-400 dark:hover:bg-pink-950/30 dark:hover:text-pink-400"
+              href="https://www.linkedin.com/in/nasim-waris/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-transparent text-slate-600 shadow-sm transition-all hover:-translate-y-1 hover:border-indigo-500 hover:bg-indigo-50 hover:text-indigo-600 dark:border-slate-800 dark:text-slate-400 dark:hover:border-indigo-400 dark:hover:bg-indigo-950/30 dark:hover:text-indigo-400"
+              aria-label="LinkedIn"
+            >
+              <LinkedinIcon />
+            </a>
+            <a
+              href="#contact"
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-transparent text-slate-600 shadow-sm transition-all hover:-translate-y-1 hover:border-pink-500 hover:bg-pink-50 hover:text-pink-600 dark:border-slate-800 dark:text-slate-400 dark:hover:border-pink-400 dark:hover:bg-pink-950/30 dark:hover:text-pink-400"
               aria-label="Mail"
             >
               <Mail size={20} />
-            </a>
-            <a
-              href="https://www.hackerrank.com/nasimwaris189"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition-all hover:-translate-y-1 hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-emerald-400 dark:hover:bg-emerald-950/30 dark:hover:text-emerald-400"
-              aria-label="HackerRank"
-            >
-              <Trophy size={20} />
             </a>
           </div>
         </motion.div>

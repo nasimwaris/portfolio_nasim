@@ -91,81 +91,121 @@ const skillsData: Skill[] = [
   { name: "Swagger", category: "tools", iconUrl: "https://img.icons8.com/?size=48&id=rdKV2dee9wxd&format=png", glowColor: "group-hover:shadow-green-500/20 group-hover:border-green-500/40" },
 ];
 
-export default function Skills() {
-  const [filter, setFilter] = useState<FilterType>("all");
+const proficiencyData = [
+  { skill: "React.js / Next.js", percentage: 92 },
+  { skill: "Node.js / Express.js", percentage: 90 },
+  { skill: "TypeScript / JavaScript", percentage: 93 },
+  { skill: "Java / Spring Boot", percentage: 85 },
+  { skill: "NestJS", percentage: 85 },
+  { skill: "PostgreSQL / MongoDB", percentage: 88 },
+  { skill: "AI / LLM Integration", percentage: 88 },
+  { skill: "Docker / AWS", percentage: 75 },
+  { skill: "REST APIs / Microservices", percentage: 90 },
+];
 
-  const filteredSkills = skillsData.filter(
-    (skill) => filter === "all" || skill.category === filter
-  );
+const categoryColors: Record<Exclude<FilterType, "all">, { text: string; bg: string; border: string; dot: string }> = {
+  languages: { text: "text-blue-500 dark:text-blue-400", bg: "hover:bg-blue-500/10", border: "border-blue-500/20 dark:border-blue-500/30", dot: "bg-blue-500" },
+  "frontend-backend": { text: "text-cyan-500 dark:text-cyan-400", bg: "hover:bg-cyan-500/10", border: "border-cyan-500/20 dark:border-cyan-500/30", dot: "bg-cyan-500" },
+  databases: { text: "text-red-500 dark:text-red-400", bg: "hover:bg-red-500/10", border: "border-red-500/20 dark:border-red-500/30", dot: "bg-red-500" },
+  backend: { text: "text-amber-500 dark:text-amber-400", bg: "hover:bg-amber-500/10", border: "border-amber-500/20 dark:border-amber-500/30", dot: "bg-amber-500" },
+  ai: { text: "text-purple-500 dark:text-purple-400", bg: "hover:bg-purple-500/10", border: "border-purple-500/20 dark:border-purple-500/30", dot: "bg-purple-500" },
+  cloud: { text: "text-emerald-500 dark:text-emerald-400", bg: "hover:bg-emerald-500/10", border: "border-emerald-500/20 dark:border-emerald-500/30", dot: "bg-emerald-500" },
+  tools: { text: "text-pink-500 dark:text-pink-400", bg: "hover:bg-pink-500/10", border: "border-pink-500/20 dark:border-pink-500/30", dot: "bg-pink-500" },
+};
+
+export default function Skills() {
+  const groupedSkills = (Object.keys(FILTER_LABELS) as FilterType[])
+    .filter((cat) => cat !== "all")
+    .map((category) => ({
+      category,
+      label: FILTER_LABELS[category],
+      skills: skillsData.filter((s) => s.category === category),
+      colors: categoryColors[category as Exclude<FilterType, "all">],
+    }));
 
   return (
-    <section id="skills" className="py-20 scroll-mt-10">
+    <section id="skills" className="py-24 scroll-mt-10">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
 
-        {/* Section Heading */}
-        <div className="text-center mb-12">
-          <h2 className="inline-flex items-center gap-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            <Laptop className="text-indigo-500" />
-            Skills & <span className="text-indigo-500">Abilities</span>
+        {/* Header */}
+        <div className="flex flex-col items-center text-center mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">
+            Skills & Technologies
           </h2>
-          <div className="mt-2 h-1 w-12 bg-indigo-500 mx-auto rounded-full" />
+          <div className="mt-4 h-1 w-12 bg-indigo-500 mx-auto rounded-full" />
         </div>
 
-        {/* Tab Filters */}
-        <div className="flex flex-wrap justify-center items-center gap-2 mb-12">
-          {(Object.keys(FILTER_LABELS) as FilterType[]).map((t) => (
-            <button
-              key={t}
-              onClick={() => setFilter(t)}
-              className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 ${filter === t
-                ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/25 scale-105"
-                : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800"
-                }`}
-            >
-              {FILTER_LABELS[t]}
-            </button>
-          ))}
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          
+          {/* Left Column: Proficiency Levels */}
+          <div>
+            <div className="flex items-center gap-3 mb-10">
+              <div className="w-1.5 h-6 bg-cyan-400 rounded-full" />
+              <h3 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100">
+                Proficiency Levels
+              </h3>
+            </div>
 
-        {/* Skills Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredSkills.map((skill) => (
-              <motion.div
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.2 }}
-                key={skill.name}
-                className={`group relative flex flex-col items-center justify-center p-6 rounded-2xl border border-slate-200 bg-white dark:border-slate-800/80 dark:bg-slate-950/40 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${skill.glowColor}`}
-              >
-                {/* Skill Icon */}
-                <div className="relative h-12 w-12 flex items-center justify-center">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={skill.iconUrl}
-                    alt={`${skill.name} icon`}
-                    className={`h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-110 ${skill.name.includes("GitHub") ? "dark:invert" : ""
-                      }`}
-                    loading="lazy"
-                  />
+            <div className="space-y-7">
+              {proficiencyData.map((item, idx) => (
+                <div key={idx}>
+                  <div className="flex justify-between items-center mb-2.5">
+                    <span className="text-sm font-bold text-slate-700 dark:text-slate-200">
+                      {item.skill}
+                    </span>
+                    <span className="text-xs font-mono font-medium text-slate-500 dark:text-slate-400">
+                      {item.percentage}%
+                    </span>
+                  </div>
+                  <div className="w-full h-1.5 rounded-full bg-slate-200 dark:bg-slate-800/80 overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${item.percentage}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, ease: "easeOut" }}
+                      className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400"
+                    />
+                  </div>
                 </div>
+              ))}
+            </div>
+          </div>
 
-                {/* Skill Title */}
-                <span className="mt-4 text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors text-center">
-                  {skill.name}
-                </span>
+          {/* Right Column: All Technologies */}
+          <div>
+            <div className="flex items-center gap-3 mb-10">
+              <div className="w-1.5 h-6 bg-indigo-500 rounded-full" />
+              <h3 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100">
+                All Technologies
+              </h3>
+            </div>
 
-                {/* Micro-glow Backdrop overlay */}
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none bg-radial from-indigo-500 to-transparent" />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+            <div className="space-y-8">
+              {groupedSkills.map((group, idx) => (
+                <div key={idx}>
+                  <div className="flex items-center gap-2.5 mb-4">
+                    <span className={`w-1.5 h-1.5 rounded-full ${group.colors.dot} shadow-sm`} />
+                    <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">
+                      {group.label}
+                    </h4>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2.5">
+                    {group.skills.map((skill, sIdx) => (
+                      <span
+                        key={sIdx}
+                        className={`px-3 py-1.5 text-xs font-medium rounded-lg border bg-transparent ${group.colors.text} ${group.colors.border} ${group.colors.bg} transition-colors cursor-default`}
+                      >
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
 
       </div>
     </section>
