@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ScrollProgress from "@/components/ScrollProgress";
+import CursorGlow from "@/components/CursorGlow";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,8 +15,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Nasim Waris",
-  description: "Full-stack developer portfolio of Nasim Waris. Specializing in Java, Spring Boot, Microservices, and Next.js/React framework.",
+  title: "Nasim Waris | Co-Founder @ PreepX | Full Stack Engineer",
+  description: "Building AI-powered SaaS products, scalable backend systems, and modern web applications. Co-Founder of PreepX.",
+  openGraph: {
+    title: "Nasim Waris | Co-Founder @ PreepX",
+    description: "Building AI-powered SaaS products and scalable backend systems.",
+    type: "website",
+  }
 };
 
 export default function RootLayout({
@@ -29,6 +36,26 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Nasim Waris",
+              "jobTitle": "Co-Founder & Full Stack Engineer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "PreepX"
+              },
+              "url": "https://nasimwaris.com",
+              "sameAs": [
+                "https://www.linkedin.com/in/nasim-waris/",
+                "https://github.com/nasimwaris"
+              ]
+            })
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -47,6 +74,8 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
+        <ScrollProgress />
+        <CursorGlow />
         {children}
       </body>
     </html>

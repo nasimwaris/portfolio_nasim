@@ -45,7 +45,9 @@ export default function Footer() {
             Nasim Portfolio
           </h3>
           <p className="text-sm leading-relaxed text-slate-400 max-w-xs">
-            Thank you for visiting my digital portfolio. I am deeply passionate about building scalable solutions and crafting impactful user experiences. I'm always open to discussing innovative projects, tech collaborations, or new career opportunities. Keep Rising 🚀. Feel free to connect with me through any of my social channels or drop a message via the contact form!
+            Building scalable software. Creating AI-powered products. Solving real-world problems.
+            <br /><br />
+            As a Co-Founder @ PreepX and Full Stack Engineer, I&apos;m always open to exciting opportunities, startup collaborations, and impactful engineering challenges. Let&apos;s build the future together. 🚀
           </p>
         </div>
 
@@ -54,14 +56,12 @@ export default function Footer() {
           <h3 className="text-lg font-bold text-white">Quick Links</h3>
           <nav className="grid grid-cols-2 gap-x-4 gap-y-2">
             {[
-              { label: "Home", href: "#home" },
-              { label: "About", href: "#about" },
-              { label: "Skills", href: "#skills" },
-              { label: "Education", href: "#education" },
               { label: "Projects", href: "#project" },
-              { label: "Experience", href: "#experience" },
-              { label: "Certificates", href: "#certificate" },
-              { label: "Contact", href: "#contact" },
+              { label: "Resume", href: "/resume.pdf" },
+              { label: "GitHub", href: "https://github.com/nasimwaris" },
+              { label: "LinkedIn", href: "https://linkedin.com/in/nasim-waris" },
+              { label: "PreepX", href: "https://preepx.in" },
+              { label: "Email", href: "mailto:nasimwaris189@gmail.com" },
             ].map((link) => (
               <a
                 key={link.label}

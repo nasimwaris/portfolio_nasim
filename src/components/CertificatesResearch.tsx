@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Award, ChevronRight, X, Bot, Monitor, Globe, Palette, Code, BookOpen, ExternalLink } from "lucide-react";
+import { Award, ChevronRight, X, Bot, Monitor, Globe, Palette, Code, BookOpen, ExternalLink, BadgeCheck } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface CertificateItem {
@@ -9,7 +9,7 @@ interface CertificateItem {
   issuer: string;
   duration: string;
   imageSrc: string;
-  icon: any;
+  icon: React.ElementType;
   iconColor: string;
 }
 
@@ -153,10 +153,10 @@ export default function CertificatesResearch() {
                             setModalImage(cert.imageSrc);
                             setModalTitle(cert.title);
                           }}
-                          className="flex items-center gap-1 text-xs font-semibold text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300"
+                          className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 transition-colors border border-indigo-500/20"
                         >
-                          View Certificate
-                          <ChevronRight size={14} />
+                          <BadgeCheck size={14} />
+                          Verify
                         </button>
                       </div>
                     </div>
@@ -172,54 +172,122 @@ export default function CertificatesResearch() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-12 max-w-5xl mx-auto"
               >
-                <div className="group flex flex-col md:flex-row justify-between items-start md:items-center p-6 md:p-8 rounded-2xl border border-slate-200/80 bg-white dark:border-slate-800/80 dark:bg-[#0a0a0f] shadow-sm transition-all duration-300 hover:shadow-md hover:border-indigo-500/20 gap-6">
-                  <div className="flex items-start gap-4 md:gap-5">
-                    <div className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl border border-indigo-200 dark:border-indigo-900/50 bg-indigo-50 dark:bg-indigo-900/20 shrink-0">
-                      <BookOpen size={24} className="text-indigo-500" />
+                {/* Paper 1 */}
+                <div className="group flex flex-col p-6 md:p-8 rounded-3xl border border-slate-800 bg-slate-900/50 shadow-xl hover:border-indigo-500/30 transition-all">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
+                    <div className="flex items-start gap-4">
+                      <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 shrink-0">
+                        <BookOpen size={24} className="text-indigo-400" />
+                      </div>
+                      <div>
+                        <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2">
+                          Published
+                        </span>
+                        <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors leading-tight">
+                          A Hybrid Rule-Based and AI-Driven Framework for Multi-Document Identity Verification
+                        </h3>
+                        <p className="text-sm text-slate-400 mt-2 font-medium">
+                          Expected Journal: IJFMR • Publication Status: Published
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors leading-relaxed">
-                        A Hybrid Rule-Based and AI-Driven Framework for Multi-Document Identity Verification Using OCR, Entity Matching, and Cross-Document Consistency Analysis
-                      </h3>
-                      <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">
-                        Research Paper
-                      </p>
+                    <a
+                      href="https://www.ijfmr.com/research-paper.php?id=82978"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="shrink-0 flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 text-sm font-semibold text-white shadow-lg transition-all hover:scale-105"
+                    >
+                      <ExternalLink size={16} /> Read Paper
+                    </a>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div className="p-5 rounded-2xl bg-slate-950/50 border border-slate-800/50">
+                      <h4 className="text-white font-semibold mb-2 text-sm flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-indigo-500" /> Research Objective
+                      </h4>
+                      <p className="text-sm text-slate-400">To build a robust identity verification system resilient against spoofing by combining heuristic rules with machine learning.</p>
+                    </div>
+                    <div className="p-5 rounded-2xl bg-slate-950/50 border border-slate-800/50">
+                      <h4 className="text-white font-semibold mb-2 text-sm flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-purple-500" /> Methodology
+                      </h4>
+                      <p className="text-sm text-slate-400">Cross-document consistency analysis, utilizing OCR for extraction and Entity Matching algorithms.</p>
                     </div>
                   </div>
-                  <a
-                    href="https://www.ijfmr.com/research-paper.php?id=82978"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shrink-0 flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:-translate-y-0.5 shadow-sm"
-                  >
-                    View Paper
-                    <ExternalLink size={16} />
-                  </a>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="p-5 rounded-2xl bg-slate-950/50 border border-slate-800/50">
+                      <h4 className="text-white font-semibold mb-2 text-sm flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-pink-500" /> Architecture & Flow
+                      </h4>
+                      <p className="text-sm text-slate-400 mb-3">Multi-stage pipeline: Document ingestion → OCR extraction → AI Confidence Scoring → Final Verdict.</p>
+                      <div className="flex gap-2">
+                        <span className="text-xs font-semibold px-2 py-1 bg-slate-800 text-slate-300 rounded">Flow Diagram Included</span>
+                      </div>
+                    </div>
+                    <div className="p-5 rounded-2xl bg-slate-950/50 border border-slate-800/50">
+                      <h4 className="text-white font-semibold mb-2 text-sm flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500" /> Tech Stack
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {["Python", "OpenCV", "Tesseract", "Transformers", "FastAPI"].map(tech => (
+                          <span key={tech} className="px-2 py-1 bg-slate-800 text-slate-300 rounded text-xs border border-slate-700">{tech}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="group flex flex-col md:flex-row justify-between items-start md:items-center p-6 md:p-8 rounded-2xl border border-slate-200/80 bg-white dark:border-slate-800/80 dark:bg-[#0a0a0f] shadow-sm transition-all duration-300 hover:shadow-md hover:border-indigo-500/20 gap-6">
-                  <div className="flex items-start gap-4 md:gap-5">
-                    <div className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl border border-indigo-200 dark:border-indigo-900/50 bg-indigo-50 dark:bg-indigo-900/20 shrink-0">
-                      <BookOpen size={24} className="text-indigo-500" />
+                {/* Paper 2 */}
+                <div className="group flex flex-col p-6 md:p-8 rounded-3xl border border-slate-800 bg-slate-900/50 shadow-xl hover:border-indigo-500/30 transition-all">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
+                    <div className="flex items-start gap-4">
+                      <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 shrink-0">
+                        <BookOpen size={24} className="text-indigo-400" />
+                      </div>
+                      <div>
+                        <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-500/10 text-orange-400 border border-orange-500/20 mb-2">
+                          Under Review
+                        </span>
+                        <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors leading-tight">
+                          An AI-Driven Document Intelligence Framework for Identity Verification
+                        </h3>
+                        <p className="text-sm text-slate-400 mt-2 font-medium">
+                          Expected Journal: IEEE Access • Publication Status: Under Review
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors leading-relaxed">
-                        An AI-Driven Document Intelligence Framework for Identity Verification with Entity Resolution and Fraud Detection
-                      </h3>
-                      <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">
-                        Research Paper
-                      </p>
+                    <a
+                      href="#"
+                      className="shrink-0 flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 border border-slate-700 text-sm font-semibold text-slate-300 cursor-not-allowed opacity-70"
+                    >
+                      Coming Soon
+                    </a>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="p-5 rounded-2xl bg-slate-950/50 border border-slate-800/50">
+                      <h4 className="text-white font-semibold mb-2 text-sm flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-indigo-500" /> Research Objective
+                      </h4>
+                      <p className="text-sm text-slate-400">Expanding upon the hybrid framework to include deep-learning based Entity Resolution and anomaly detection.</p>
+                    </div>
+                    <div className="p-5 rounded-2xl bg-slate-950/50 border border-slate-800/50">
+                      <h4 className="text-white font-semibold mb-2 text-sm flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500" /> Tech Stack
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {["PyTorch", "HuggingFace", "AWS", "Neo4j"].map(tech => (
+                          <span key={tech} className="px-2 py-1 bg-slate-800 text-slate-300 rounded text-xs border border-slate-700">{tech}</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  <a
-                    href="#"
-                    className="shrink-0 flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:-translate-y-0.5 shadow-sm"
-                  >
-                    Coming Soon
-                  </a>
                 </div>
+
               </motion.div>
             )}
           </AnimatePresence>

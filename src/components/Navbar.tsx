@@ -117,7 +117,7 @@ export default function Navbar() {
           {/* Theme Toggle Button */}
           <button
             onClick={toggleTheme}
-            className="rounded-full p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-900 transition-colors"
+            className="hidden rounded-full p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-900 transition-colors"
             aria-label="Toggle Theme"
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
@@ -128,7 +128,7 @@ export default function Navbar() {
         <div className="flex md:hidden items-center gap-4">
           <button
             onClick={toggleTheme}
-            className="rounded-full p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-900 transition-colors"
+            className="hidden rounded-full p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-900 transition-colors"
             aria-label="Toggle Theme"
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
